@@ -13,7 +13,6 @@ def get_numbers_ticket(min, max, quantity):
         list: A sorted list of unique random numbers. Returns an empty list if 
               the input parameters are invalid (e.g., min < 1, max > 1000, or quantity out of range).
     """
-    # Validate input types
     if not all(isinstance(arg, int) for arg in [min, max, quantity]):
         print("All input parameters must be integers.")
         return []
