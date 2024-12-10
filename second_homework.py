@@ -10,16 +10,24 @@ def get_numbers_ticket(min, max, quantity):
         quantity (int): The number of unique random numbers to generate.
 
     Returns:
-        list: A sorted list of unique random numbers. Returns an empty list if 
-              the input parameters are invalid (e.g., min < 1, max > 1000, or quantity out of range).
+        list: A sorted list of unique random numbers.
     """
     if not all(isinstance(arg, int) for arg in [min, max, quantity]):
         print("All input parameters must be integers.")
         return []
     
-    if min < 1 or max > 1000 or not (min <= quantity <= max):
+    if min < 1:
+        print("min не може бути менше 1")
         return []
-
+    
+    if max > 1000:
+        print("max не може бути більше 1000")
+        return []
+    
+    if quantity > (max - min + 1):
+        print("Quantity перевищує кількість цифр в діапазоні між min та max")
+        return []
+    
     uniq_numbers = set()
     while len(uniq_numbers) < quantity:
         random_number = random.randint(min, max)
@@ -28,5 +36,5 @@ def get_numbers_ticket(min, max, quantity):
     sorted_list = sorted(uniq_numbers)
     return sorted_list
 
-numbers = get_numbers_ticket(1, 10, 7)
+numbers = get_numbers_ticket(100, 118,  19)
 print(numbers)
